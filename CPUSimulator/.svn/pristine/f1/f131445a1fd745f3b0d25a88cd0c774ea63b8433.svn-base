@@ -1,0 +1,42 @@
+package edu.gwu.core;
+
+import edu.gwu.exception.IllegalMemoryAddressException;
+
+public class Memory {
+
+	private static Memory _instance;
+	
+	private int memData[][];
+	
+	public Memory(){
+		this.memData = new int[Setting.MEM_WORD_LENGTH][Setting.WORD_SIZE];
+	}
+	
+	
+	public int[] readWord(int index) throws IllegalMemoryAddressException{
+		if(index<0||index>Setting.MEM_WORD_LENGTH)
+			throw new IllegalMemoryAddressException(index);
+		return this.memData[index];
+	}
+	
+	public void writeWord(int index,int[] data) throws IllegalMemoryAddressException{
+		if(index<0||index>Setting.MEM_WORD_LENGTH)
+			throw new IllegalMemoryAddressException(index);
+		
+		for(int i=0;i<Setting.WORD_SIZE;i++){
+			this.memData[index][Setting.WORD_SIZE-i-1] = (i<data.length)?(data[data.length-1-i]):0;
+		}
+	}
+	
+	public static Memory getInstance(){
+		if(_instance == null){
+			initInstance();
+		}
+		return _instance;
+	}
+	
+	private static void initInstance(){
+		_instance = new Memory();
+	}
+	
+}

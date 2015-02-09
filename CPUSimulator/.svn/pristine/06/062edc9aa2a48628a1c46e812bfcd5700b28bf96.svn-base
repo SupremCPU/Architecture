@@ -1,0 +1,416 @@
+package edu.gwu.core;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import edu.gwu.common.Util;
+import edu.gwu.core.basic.InstructionCircle;
+import edu.gwu.core.basic.InstructionCircles;
+import edu.gwu.core.basic.InstructionSet;
+import edu.gwu.exception.IllegalInstructionCodeException;
+import edu.gwu.exception.IllegalMemoryAddressException;
+import edu.gwu.exception.InstructionExecuteException;
+import edu.gwu.exception.RegisterNotFoundException;
+import edu.gwu.frame.Log;
+
+public class CPU {
+
+	private static CPU _instance;
+	
+	public static CPU getInstance(){
+		if(_instance==null)
+			_instance = new CPU();
+		return _instance;
+	}
+	
+
+	/**
+	 * all registers are stored here
+	 */
+	private Map<String,Register> registers;
+	/**
+	 * just used to save the order of registers
+	 */
+	private List<String> registersOrder;
+	
+	private Memory memory = Memory.getInstance();
+	
+	private Log log = Log.getInstance();
+	
+	//private boolean isDebug = true;
+	//private int leftStep = 0;
+	
+	public CPU(){
+		registers = new HashMap<String,Register>();
+		registersOrder = new ArrayList<String>();
+		//init all registers
+//		regR0 = new Register("R0",18);
+//		regR1 = new Register("R1",18);
+//		regR2 = new Register("R2",18);
+//		regR3 = new Register("R3",18);
+//		regX1 = new Register("X1",12);
+//		regX2 = new Register("X2",12);
+//		regX3 = new Register("X3",12);
+//		regPC = new Register("PC",12);
+//		regCC = new Register("CC",4);
+//		regIR = new Register("IR",18);
+//		regMAR = new Register("MAR",12);
+//		regMBR = new Register("MBR",18);
+//		regMSR = new Register("MSR",18);
+//		regMFR = new Register("MFR",4);
+//		
+//		regOPCODE = new Register("OPCODE",6);
+//		regR = new Register("R",2);
+//		regI = new Register("I",1);
+//		regIX = new Register("IX",2);
+//		regADDR = new Register("ADDR",8);
+//		regEA = new Register("EA",8);
+		
+		/*
+		 * General Purpose Registers
+		 * <br>18-bit
+		 */
+		addRegister("R0",18);
+		addRegister("R1",18);
+		addRegister("R2",18);
+		addRegister("R3",18);
+		
+		/*
+		 * index registers: contains a 12-bit base address that supports base register addressing of memory.
+		 * <br>12-bit
+		 */
+		addRegister("X1",12);
+		addRegister("X2",12);
+		addRegister("X3",12);
+		
+		/*
+		 * Program Counter: address of next instruction to be executed
+		 * <br>12-bit
+		 */
+		addRegister("PC",12);
+		
+		/*
+		 * Condition Code: set when arithmetic/logical operations are executed; 
+		 * it has four 1-bit elements: overflow, underflow, division by zero, equal-or-not. 
+		 * <br>4-bit
+		 */	
+		addRegister("CC",4);
+		
+		/*
+		 * Instruction Register: holds the instruction to be executed
+		 * <br>18-bit
+		 */
+		addRegister("IR",18);
+		
+		/*
+		 * Memory Address Register: holds the address of the word to be fetched from memory
+		 * <br>12-bit
+		 */
+		addRegister("MAR",12);
+		
+		/*
+		 * Memory Buffer Register: holds the word just fetched from or stored into memory
+		 * <br>18-bit
+		 */
+		addRegister("MBR",18);
+		
+		/*
+		 * Machine Status Register: certain bits record the status of the health of the machine
+		 * <br>18-bit
+		 */
+		addRegister("MSR",18);
+		
+		/*
+		 * Machine Fault Register: contains the ID code if a machine fault after it occurs
+		 * <br>4-bit
+		 */
+		addRegister("MFR",4);
+		
+		addRegister("OPCODE",6);
+		addRegister("R",2);
+		addRegister("I",1);
+		addRegister("IX",2);
+		addRegister("ADDR",8);
+		addRegister("EA",8);
+		
+		addRegister("OP1",18);
+		addRegister("OP2",18);
+		addRegister("RES",18);
+	}
+	
+	private void addRegister(String name,int size){
+		registers.put(name, new Register(name,size));
+		registersOrder.add(name);
+	}
+	
+	
+	
+	public void execute(){
+	
+		try {
+			while(true){
+				log.console("--------------------START");
+				executeNextInstruction();
+				log.console("--------------------END");
+			}
+		} catch (InstructionExecuteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			log.console("[ERROR] "+ e.getMessage());
+		} catch (IllegalInstructionCodeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			log.console("[ERROR] "+ e.getMessage());
+		}
+		
+		
+	}
+	
+	private void executeNextInstruction() throws InstructionExecuteException, IllegalInstructionCodeException{
+		try {
+			/*
+			 * execute first 4 steps
+			 */
+			InstructionCircles beginning = InstructionCircles.getCommonBeginning();
+			for(InstructionCircle circle:beginning.getCircles()){
+				executeOneCircle(circle);
+			}
+			
+			/*
+			 * execute the different circles for specific instruction 
+			 * (after last 4 steps, we can know which instruction is executing)
+			 */
+			InstructionCircles content = InstructionSet.getCircles(getRegisterByRealName("OPCODE").intValue());
+			if(content==null)
+				throw new IllegalInstructionCodeException("CODE:"+getRegisterByRealName("OPCODE").intValue());
+			for(InstructionCircle circle:content.getCircles()){
+				executeOneCircle(circle);
+			}
+		} catch (IllegalMemoryAddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new InstructionExecuteException("OPCODE: "+registers.get("OPCODE"));
+		} catch (RegisterNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @param circle
+	 * @throws IllegalMemoryAddressException
+	 * @throws RegisterNotFoundException 
+	 */
+	private void executeOneCircle(InstructionCircle circle) throws IllegalMemoryAddressException, RegisterNotFoundException{
+		
+		/**
+		 * used to save log information
+		 */
+		StringBuffer msg = new StringBuffer();
+		
+		Register dest,source;
+		
+		/*
+		 *	do different work according to the TYPE 
+		 */
+		switch(circle.type){
+		
+		case(InstructionCircle.TYPE_REG2REG):
+			dest = getRegister(circle.args[0]);
+			source = getRegister(circle.args[1]);
+			dest.write(source.read());
+			msg.append(dest.name).append(" = (").append(source.name).append(")");
+			break;
+			
+			
+		case(InstructionCircle.TYPE_REG2MEM):
+			//TODO
+			dest = getRegister(circle.args[1]);
+			source = getRegister(circle.args[0]);
+			memory.writeWord(dest.intValue(), source.read());
+			msg.append("MEM(").append(dest.name).append(") = ").append(source.name);
+			break;
+			
+			
+		case(InstructionCircle.TYPE_MEM2REG):
+			source = getRegister(circle.args[1]);
+			dest = getRegister(circle.args[0]);
+			dest.write(memory.readWord(source.intValue()));
+			msg.append(dest.name).append(" = MEM(").append(source.name).append(")");
+			break;
+			
+			
+		case(InstructionCircle.TYPE_DECODE):
+			doCpuDecode(msg);
+			break;
+		/*
+		 * calculate EA by XI,i
+		 */
+		case(InstructionCircle.TYPE_CALCULATE_EA):
+			int ix = getRegisterByRealName("IX").intValue();
+			//get address from ADDR
+			int address = getRegisterByRealName("ADDR").intValue();
+			//add address by Xn if n(IX)>0
+			if(ix != 0){
+				address += getRegisterByRealName("R"+ix).intValue();
+			}
+			//get value of I-register
+			int i = getRegisterByRealName("I").intValue();
+			//change address to the value of memory at $address$ if i==1
+			if(i==1)
+				address = Util.getIntValueFromBits(memory.readWord(address));
+			//save address into EA-register
+			getRegisterByRealName("EA").setValueByInt(address);
+			
+			msg.append("EA = (ADDR,IX,I)");
+			break;
+		
+		
+		case(InstructionCircle.TYPE_CALCULATE_MBR_FOR_EXCUTE):
+			
+			break;
+		
+		
+		case(InstructionCircle.TYPE_ALU_EXCUTE):
+			int op1 = getRegisterByRealName("OP1").intValue();
+			int op2 = getRegisterByRealName("OP2").intValue();
+			int opcode = getRegisterByRealName("OPCODE").intValue();
+			int value;
+			
+			msg.append("RES = OP1 ");
+			switch(opcode){
+			case(4):
+			case(6):
+				value = op1+op2;
+				msg.append("+");
+			break;
+			case(5):
+			case(7):
+				value = op1-op2;
+				msg.append("-");
+			default:
+				value = 0;
+			}
+			msg.append(" OP2");
+			getRegisterByRealName("RES").setValueByInt(value);
+			
+			
+			
+			break;
+			
+			
+		case(InstructionCircle.TYPE_LOAD_OP1_AND_OP2):
+			dest = getRegister(circle.args[0]);
+			source = getRegister(circle.args[1]);
+			getRegisterByRealName("OP1").write(dest.read());
+			getRegisterByRealName("OP2").write(source.read());
+			msg.append("OP1 = (").append(dest.name)
+				.append("), OP2 = (").append(source.name).append(")");
+			break;
+			
+			
+		case(InstructionCircle.TYPE_PC_PLUS):
+			dest = getRegisterByRealName("PC");
+			dest.addValueByInt(1);
+			msg.append("PC = (PC) + 1");
+			break;
+			
+			
+		default:
+			
+			break;
+			
+			
+		}
+		log.console(msg.toString());
+		//log.console("one circle["+circle.type+"] finished...");
+	}
+	
+	/**
+	 * 
+	 * @param msg
+	 * @throws RegisterNotFoundException
+	 */
+	private void doCpuDecode(StringBuffer msg) throws RegisterNotFoundException {
+
+		Register source = getRegister("IR");
+		getRegisterByRealName("OPCODE").write(source.subValue(0, 6));
+		getRegisterByRealName("IX").write(source.subValue(6, 2));
+		getRegisterByRealName("R").write(source.subValue(8, 2));
+		getRegisterByRealName("I").write(source.subValue(10, 1));
+		getRegisterByRealName("ADDR").write(source.subValue(11, 7));
+		msg.append("OPCODE,IX,R,I,ADDR = (").append(source.name).append(")");
+	}
+
+	/**
+	 * this method return the register by specific name
+	 * <br>if name="R", Rn will be returned (n is decided by R-register's value)
+	 * <br>so does "IX"
+	 * 
+	 * <br>R-register and IX-register can be got by 'getRegisterByRealName(name)'
+	 * @param name
+	 * @return Register of $registerRealName$
+	 * @throws RegisterNotFoundException if no register is found with $registerRealName$
+	 */
+	private Register getRegister(String name) throws RegisterNotFoundException{
+		//find the real name for register
+		String registerRealName;
+		if("R".equals(name)){
+			int rVal = registers.get(name).intValue();
+			registerRealName = ("R"+rVal);
+		}
+		else if("IX".equals(name)){
+			int iVal = registers.get(name).intValue();
+			registerRealName = ("X"+iVal);
+		}
+		else{
+			registerRealName = name;
+		}
+		
+		return getRegisterByRealName(registerRealName);
+	}
+	
+	/**
+	 * 
+	 * @param registerRealName
+	 * @return Register of $registerRealName$
+	 * @throws RegisterNotFoundException if no register is found with $registerRealName$
+	 */
+	private Register getRegisterByRealName(String registerRealName) throws RegisterNotFoundException{
+		if(registers.keySet().contains(registerRealName))
+			return registers.get(registerRealName);
+		else
+			throw new RegisterNotFoundException(registerRealName);
+	}
+
+	/**
+	 * get the map of register
+	 * @return
+	 */
+	public Map<String,Register> getRegisters() {
+		return registers;
+	}
+
+	/**
+	 * get the amount of registers
+	 * @return
+	 */
+	public int getRegisterSize(){
+		return registers.size();
+	}
+	
+	/**
+	 * get the name list (keep the order in which registers are added)
+	 * @return
+	 */
+	public List<String> getRegisterNames(){
+		return this.registersOrder;
+	}
+	
+	
+	
+}

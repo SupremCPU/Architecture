@@ -1,0 +1,12 @@
+package edu.gwu.core;
+
+public class Setting {
+
+	public static final int WORD_SIZE = 18;
+	
+	
+	public static final int MEM_WORD_LENGTH = 2048;
+	
+	
+	
+}

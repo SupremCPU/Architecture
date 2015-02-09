@@ -1,0 +1,69 @@
+package edu.gwu.frame;
+
+import java.awt.BorderLayout;
+import java.util.Map;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import edu.gwu.core.CPU;
+import edu.gwu.core.Register;
+
+public class RegisterPanel extends JPanel{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1639344321590175320L;
+
+	
+	private CPU cpu = CPU.getInstance();
+	private JScrollPane js;
+	private JTable table;
+	
+	
+	public RegisterPanel(){
+		
+		TitledBorder nameTitle =new TitledBorder("Registers"); 	
+		this.setBorder(nameTitle);
+		
+		this.setLayout(new BorderLayout());
+		
+		
+		table = new JTable(cpu.getRegisterSize(),3);
+		String[] tableHeads = new String[] { "Register", "Binary Value", "Decimal Value"};
+		DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+		dtm.setColumnIdentifiers(tableHeads);
+
+		TableColumn col = table.getColumnModel().getColumn(0);
+		table.getTableHeader().setResizingColumn(col);
+		col.setWidth(60);
+		col = table.getColumnModel().getColumn(1);
+		table.getTableHeader().setResizingColumn(col);
+		col.setWidth(160);
+
+		table.setEnabled(false);
+		
+		
+		update();
+		js = new JScrollPane(table);
+				
+		this.add(js,BorderLayout.CENTER);
+	}
+	
+	public void update(){
+		Map<String,Register> regs = cpu.getRegisters();
+		int i = 0;
+		for(String key:cpu.getRegisterNames()){
+			table.setValueAt(key, i, 0);
+			Register reg = regs.get(key);
+			table.setValueAt(reg.getBinaryString(), i, 1);
+			table.setValueAt(reg.intValue(), i, 2);
+			i++;
+		}
+	}
+}
