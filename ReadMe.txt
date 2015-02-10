@@ -1,6 +1,7 @@
 1.	Hardware
 	a.	Register
-	基础类，用于构造Computer各个部件，用于实现各部件的基本显示，存取，转换等。某些方法需按寄存器的bit位数	来进行重载。
+	基础类，用于构造Computer各个部件，用于实现各部件的基本显示，存取，转换等。
+	某些方法需按寄存器的bit位数	来进行重载。
 2.	Computer
 	a.	CPU
 	CPU各个部件，PC，IR等等。由Register类声明构造。
