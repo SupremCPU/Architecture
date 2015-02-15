@@ -85,9 +85,15 @@ public class DataRegister extends Register  {
 		this.Sync();
 	}
 	@Override
-	public void write(short Data)
+	public void write(short Data)  
 	{
 		this.DataWord=Data;
+		try {
+			Thread.sleep(this.Father.clockFreq);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.SyncB();
 		
 	}

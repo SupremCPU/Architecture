@@ -16,9 +16,15 @@ public class Register {
 	{
 		return DataWord;
 	}
-	public void write(short Data)
+	public void write(short Data)  
 	{
 		this.DataWord=Data;
+		try {
+			Thread.sleep(this.Father.clockFreq);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public byte[] toBytes()
 	{	byte high=(byte)(DataWord>>>8);   

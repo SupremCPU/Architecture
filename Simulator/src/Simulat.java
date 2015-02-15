@@ -154,7 +154,12 @@ public class Simulat extends javax.swing.JFrame {
         SingleStep.setText("SingleStep");
         SingleStep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SingleStepActionPerformed(evt);
+                try {
+					SingleStepActionPerformed(evt);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -377,7 +382,7 @@ public class Simulat extends javax.swing.JFrame {
         panel.myCPU.R[3].write(Data);         // TODO add your handling code here:
     }//GEN-LAST:event_setR3ActionPerformed
 
-    private void SingleStepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SingleStepActionPerformed
+    private void SingleStepActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_SingleStepActionPerformed
       Instruction Inst=new Instruction(SingleScript.getText(),panel.myCPU);
       Inst.ParseInst();
       myCPU.IR.write(Inst.Inst);

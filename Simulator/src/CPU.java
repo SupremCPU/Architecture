@@ -10,7 +10,7 @@ public class CPU {
 	public static Hashtable<String,Opcode> StrList=new Hashtable<String,Opcode>();
 	
 	//======================A central cycle====== Need more implementation.
-	private int clockFreq=2;
+	public int clockFreq=1000;
 	
 	//=========================Mimic Inst as a Message Queue=========
 	public ArrayList<Message> MessageQue=null;
@@ -53,7 +53,7 @@ public class CPU {
 	
 	
 	//==============================Definition of Instruction=============================================================		
-	public CodeExecutor LDR=new CodeExecutor()
+	public CodeExecutor LDR =new CodeExecutor() 
 	{
 		public short RIndex;
 		public int IXIndex;
@@ -102,7 +102,7 @@ public class CPU {
 		public void Decode()
 		{	MAR.write((short) getEAByIX(Mem,I,IXIndex));
 			System.out.println("Effective Target Memory Address is "+MAR.read()+" Write it to MAR");
-			MBR.write(Father.readMemDirect(MAR.read()))  ;         //Father.readEffecientMemory(Mem,I,IXIndex); //the index of the
+			MBR.write((short) Father.readMemDirect(MAR.read()))  ;         //Father.readEffecientMemory(Mem,I,IXIndex); //the index of the
 			System.out.println("Access the memory pointed by MAR. Load the data to MBR. Data value is:"+MBR.read());			
 		}
 		public void Execute()
@@ -191,6 +191,7 @@ public class CPU {
 			Fetch();
 			Decode();
 			Memory();
+			
 		}
 	};
 	public CodeExecutor LDA=new CodeExecutor(){
@@ -890,7 +891,7 @@ public class CPU {
 	
 	
 	public boolean writeMemory(int Address,short value,int Method,int IndexIX)  //Write Memory Func for things such like UI stuff. Manipulate the memory Directly.
-	{	System.out.println("UI Set Memory- Address:"+Address+". Data:"+value+". I:"+Method+". IX:"+IndexIX);
+	{	System.out.println("UI Set Memory- Address:"+Address+". Data:"+(short)value+". I:"+Method+". IX:"+IndexIX);
 		/*if(!checkIX(IndexIX))
 		{	System.out.println("Debug: Failure of IX check");
 			return false;

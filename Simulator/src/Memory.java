@@ -102,11 +102,12 @@ public class Memory {
 		System.out.println("Debug: Class Memory- write failure");
 		return false;
 	}
-	public boolean writeData(int address,short value)
+	public boolean writeData(int address,short value) throws InterruptedException
 	{
 		if(dataAddrCheck(address))
 		{
 			 Word[address]=value;
+			 Thread.sleep(this.CPU().clockFreq);
 			 return true;
 		}		
 		return false;		

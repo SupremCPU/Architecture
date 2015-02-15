@@ -121,7 +121,7 @@ public class Instruction extends Message {
 		test.FullCommand="LDR 1 2 3 I";
 		test.ParseInst();
 		CodeExecutor A=(CPU.Command.get(3));
-		CPUU.R[1].write((short)20);
+		//CPUU.R[1].write((short)20);
 		Memory.write(30, (short) 1000);
 		Memory.write(1000, (short) 909);
 		A.Init(1,0,0,30,CPUU);
