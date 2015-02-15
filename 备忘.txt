@@ -1,0 +1,10 @@
+1 Carry Flag当时设计的时候有两个搞错了， 需要微调，暂时先搁置反正操作量不大。
+
+2 要求中提及的“额外的寄存器” 也许是Result Register， PC作为一个伪Register， PS:以后的课程可能会提及这个内容。
+
+3 对包含而不限例如LDX等检查参数是否有效指令，需要自行handle exception.
+
+
+4 含“Debug”的print是可以删除的。
+
+5 详细内容请在历史中查找2/15 5:00 AM之前的commit. 
