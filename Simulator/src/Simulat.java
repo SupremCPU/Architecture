@@ -353,6 +353,7 @@ public class Simulat extends javax.swing.JFrame {
     private void setR0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setR0ActionPerformed
         short Data=  Short.parseShort(textT0.getText()) ; 
         panel.myCPU.R[0].write(Data);        // TODO add your handling code here:
+        System.out.println("R0 is set to "+  panel.myCPU.R[0].read());
     }//GEN-LAST:event_setR0ActionPerformed
 
     private void textT0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textT0ActionPerformed
@@ -366,6 +367,7 @@ public class Simulat extends javax.swing.JFrame {
     private void setR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setR1ActionPerformed
          short Data=  Short.parseShort(textT1.getText()) ; 
         panel.myCPU.R[1].write(Data);        // TODO add your handling code here:
+        System.out.println("R1 is set to "+  panel.myCPU.R[1].read());
     }//GEN-LAST:event_setR1ActionPerformed
 
     private void textT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textT2ActionPerformed
@@ -375,11 +377,13 @@ public class Simulat extends javax.swing.JFrame {
     private void setR2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setR2ActionPerformed
        short Data=  Short.parseShort(textT2.getText()) ; 
         panel.myCPU.R[2].write(Data); 
+        System.out.println("R2 is set to "+  panel.myCPU.R[2].read());
     }//GEN-LAST:event_setR2ActionPerformed
 
     private void setR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setR3ActionPerformed
        short Data=  Short.parseShort(textT3.getText()) ; 
         panel.myCPU.R[3].write(Data);         // TODO add your handling code here:
+        System.out.println("R3 is set to "+  panel.myCPU.R[3].read());
     }//GEN-LAST:event_setR3ActionPerformed
 
     private void SingleStepActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_SingleStepActionPerformed
@@ -391,7 +395,7 @@ public class Simulat extends javax.swing.JFrame {
      //       System.out.println("debug current PC at single step "+myCPU.PC.get());
       panel.myCPU.writeMemory(myCPU.PC.get(), Inst.Inst, 0, 0);
     
-      myCPU.OperatingSystem.run(); //For now. Just Run it for single time.  Alert: Should be completed if all templates are checked.
+      myCPU.OperatingSystem.runSingle(); //For now. Just Run it for single time.  Alert: Should be completed if all templates are checked.
         
 
 // ConsolePad.get  // TODO add your handling code here:
@@ -399,7 +403,8 @@ public class Simulat extends javax.swing.JFrame {
 
     private void setX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setX1ActionPerformed
              short Data=  Short.parseShort(textX1.getText()) ; 
-        panel.myCPU.X[1].write(Data);    // TODO add your handling code here:
+             panel.myCPU.X[1].write(Data);    // TODO add your handling code here:
+             System.out.println("X1 is set to "+  panel.myCPU.X[1].read());
     }//GEN-LAST:event_setX1ActionPerformed
 
     private void textX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textX1ActionPerformed
@@ -409,16 +414,19 @@ public class Simulat extends javax.swing.JFrame {
     private void setX2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setX2ActionPerformed
               short Data=  Short.parseShort(textX2.getText()) ; 
         panel.myCPU.X[2].write(Data);    
+        System.out.println("X2 is set to "+  panel.myCPU.X[2].read());
     }//GEN-LAST:event_setX2ActionPerformed
 
     private void setX3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setX3ActionPerformed
                 short Data=  Short.parseShort(textX3.getText()) ; 
         panel.myCPU.X[3].write(Data);    // TODO add your handling code here:
+        System.out.println("X3 is set to "+  panel.myCPU.X[3].read());
     }//GEN-LAST:event_setX3ActionPerformed
 
     private void setPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setPCActionPerformed
        short Data=  Short.parseShort(text_PC.getText()) ;  // TODO add your handling code here:
        panel.myCPU.PC.set(Data);
+       System.out.println("PC is set to "+  panel.myCPU.PC.get());       
     }//GEN-LAST:event_setPCActionPerformed
 
     private void text_PCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_PCActionPerformed
@@ -437,7 +445,7 @@ public class Simulat extends javax.swing.JFrame {
       short Data1=  Short.parseShort(textAddress.getText()) ;   
         short Data2= Short.parseShort(textValue.getText());// TODO add your handling code here:
         panel.myCPU.writeMemory(Data1,Data2,0,0);
-        System.out.println("debug set mem in panel: Data1:"+Data1+" Data2:"+Data2);
+        System.out.println("Set Memory at Address:"+Data1+" to value:"+Data2);
     }//GEN-LAST:event_setMemoryActionPerformed
   
     /**

@@ -2,6 +2,10 @@
 public class sysThread extends Thread {
 	public CPU Father;
 	private int Sleep;
+	public void runSingle()
+	{
+		Father.ExecuteInstwithPC(Father.IR.read());//Execute it and PC++	
+	}
 	public void run() //For now-->Only for single step. Add some parameter to fit normal run process.
 	
 	{	//while(true)  //For now. 1 Time Only
@@ -13,7 +17,7 @@ public class sysThread extends Thread {
 					//Father.MAR.write((short) Father.PC.get()); //Send PC to MAR;
 					//Father.MBR.write(Father.readMemDirect(Father.MAR.read())); //MBR carries instruction.
 					//Father.IR.write(Father.MBR.read());
-					Father.ExecuteInstwithPC(Father.IR.read());//Execute it and PC++	
+					this.runSingle();
 					sleep(Sleep);
 				} 
 				catch (InterruptedException e) {

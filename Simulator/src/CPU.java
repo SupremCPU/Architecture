@@ -32,7 +32,7 @@ public class CPU {
 	public IR IR=new IR(this);
 	
 	public final static boolean ReadOnly=true; 
-	public final static boolean WriteAble=true; 	
+	public final static boolean WriteAble=false; 	
 	public final static int Indirect=1;
 	public final static int Direct=0;
 	public byte[] CC=(new StatusFlag((byte)0,(byte)0,(byte)0,(byte)0)).ZCSO(); //StatusFlag is a signal pack.
@@ -944,9 +944,10 @@ public class CPU {
 				return Address;
 			}
 			
-			this.MAR.write((short) (Address+this.X[IndexIX].read()));  //load MAR
+			//this.MAR.write((short) (Address+this.X[IndexIX].read()));  //load MAR is not necessary here.
+			System.out.println("Value in X"+IndexIX+" is"+this.X[IndexIX].read());
 			System.out.println("Direct Access with Indexing. EA is: "+this.MAR.read());
-			return readMemDirect(this.MAR.read());    //Another MAR moving will be outside
+			return Address+this.X[IndexIX].read();    //Another MAR moving will be outside
 		}	
 		else if(Method==CPU.Indirect)			
 		{	

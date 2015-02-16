@@ -46,6 +46,12 @@ public class IX extends DataRegister{
 	public void write(short Data)
 	{	if(ReadOnly)return;
 		this.DataWord=Data;
+		try {
+			Thread.sleep(Father.clockFreq);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.SyncB();
 		
 	}
