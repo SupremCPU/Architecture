@@ -124,6 +124,7 @@ public class CPU {
 			Decode();
 			//Execute();
 			WriteBack();
+			Father.PC.Increment();
 		}
 	};
 	public CodeExecutor STR=new CodeExecutor()
@@ -191,7 +192,7 @@ public class CPU {
 			Fetch();
 			Decode();
 			Memory();
-			
+			Father.PC.Increment();
 		}
 	};
 	public CodeExecutor LDA=new CodeExecutor(){
@@ -259,6 +260,7 @@ public class CPU {
 			Decode();
 			
 			WriteBack();
+			Father.PC.Increment();
 		}
 	};
 	
@@ -332,6 +334,7 @@ public class CPU {
 			Fetch();
 			Decode();
 			WriteBack();
+			Father.PC.Increment();
 		}
 	};
 	
@@ -416,6 +419,7 @@ public class CPU {
 			Fetch();
 			Decode();
 			Memory();
+			Father.PC.Increment();
 		}
 	};	
 	
@@ -499,6 +503,7 @@ public class CPU {
 			Decode();
 			Execute();
 			WriteBack();
+			Father.PC.Increment();
 		}
 	};
 	
@@ -582,6 +587,7 @@ public class CPU {
 			Decode();
 			Execute();
 			WriteBack();
+			Father.PC.Increment();
 		}
 	};
 	
@@ -671,6 +677,7 @@ public class CPU {
 			Decode();
 			Execute();
 			WriteBack();
+			Father.PC.Increment();
 		}
 		
 		
@@ -765,6 +772,7 @@ public class CPU {
 			Decode();
 			Execute();
 			WriteBack();
+			Father.PC.Increment();
 		}	
 	};
 //==============================Definition of Instruction End=============================================================	
@@ -788,11 +796,6 @@ public class CPU {
 	
 	
 	
-	public int getFreq()
-	{
-		return clockFreq;
-	}
-
 	CPU(Bus Bus)
 	{
 		this.Bus=Bus; //Use this "bus" will connect CPU to memory. empty bus-->load cpu and memory
@@ -984,7 +987,7 @@ public class CPU {
 		}
 		Execution.Init(Instruct,this);
 		Execution.ExecuteFunc();
-		this.PC.Increment();
+		
 	}
 	
 

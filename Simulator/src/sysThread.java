@@ -8,7 +8,7 @@ public class sysThread extends Thread {
 	}
 	public void run() //For now-->Only for single step. Add some parameter to fit normal run process.
 	
-	{	//while(true)  //For now. 1 Time Only
+	{	while(true)  //For now. 1 Time Only
 	//System.out.println("run");	
             {
 		
