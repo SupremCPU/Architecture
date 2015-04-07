@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Simulator/src"/>
+	<classpathentry kind="src" path="ZiLiao/panmengchen/Part_2/Part#2/CPUSimulator/src"/>
+	<classpathentry kind="src" path="ZiLiao/panmengchen/Part_3/Part3/CPUSimulator.src/src"/>
+	<classpathentry kind="src" path="ZiLiao/part 1 michael/CPUSimulator/src"/>
+	<classpathentry kind="src" path="ZiLiao/ZZ 版本1/part1/ComputerArchitectureSimulator/src"/>
+	<classpathentry kind="lib" path="ZiLiao/part 1 michael/Group1.jar"/>
+	<classpathentry kind="lib" path="ZiLiao/ZZ 版本1/Part2/ComputerArchitectureSimulator.jar"/>
+	<classpathentry kind="lib" path="ZiLiao/ZZ 版本1/PartIV/Simulator-PartIV.jar"/>
+	<classpathentry kind="lib" path="ZiLiao/ZZ 版本2/part 2/part 2/Simulator_part_2_group2_v2.0.jar"/>
+	<classpathentry kind="lib" path="ZiLiao/ZZ 版本2/Part one/Simulater_part1_group2_v1.0.jar"/>
+	<classpathentry kind="lib" path="ZiLiao/ZZ 版本2/Part one/Simulator_part1_group2_v1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="ZiLiao/part 1 michael/CPUSimulator/bin"/>
+</classpath>
