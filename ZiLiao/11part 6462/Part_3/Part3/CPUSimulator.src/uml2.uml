@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA" name="uml2">
+  <packagedElement xmi:type="uml:Package" xmi:id="_PnclMD24EeSU97Q6_IErnA" name="edu">
+    <packagedElement xmi:type="uml:Package" xmi:id="_PndzUD24EeSU97Q6_IErnA" name="gwu">
+      <packagedElement xmi:type="uml:Package" xmi:id="_PndzUT24EeSU97Q6_IErnA" name="common">
+        <packagedElement xmi:type="uml:Class" xmi:id="_PpRKID24EeSU97Q6_IErnA" name="Util">
+          <ownedAttribute xmi:id="_Pt-D8D24EeSU97Q6_IErnA" name="timeFormat" visibility="private" isStatic="true" type="_PtNO8D24EeSU97Q6_IErnA"/>
+          <ownedOperation xmi:id="_Pv8Z4D24EeSU97Q6_IErnA" name="getIntValueFromBits" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_Pv8Z4T24EeSU97Q6_IErnA" name="bits">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Pv8Z4j24EeSU97Q6_IErnA" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Pv8Z4z24EeSU97Q6_IErnA"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_Pv8Z5D24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_Pv-PED24EeSU97Q6_IErnA" name="getBitsFromIntValue" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_Pv-PET24EeSU97Q6_IErnA" name="value">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_Pv-PEj24EeSU97Q6_IErnA" name="size">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_Pv-PEz24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PwCggT24EeSU97Q6_IErnA" name="getBinaryStringFromBits" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_PwCggj24EeSU97Q6_IErnA" name="bits">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PwCggz24EeSU97Q6_IErnA" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PwCghD24EeSU97Q6_IErnA"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_PwCghT24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PwE8wD24EeSU97Q6_IErnA" name="getBinaryStringFormBitsInInstructionFormat" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_PwE8wT24EeSU97Q6_IErnA" name="bits">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PwE8wj24EeSU97Q6_IErnA" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PwE8wz24EeSU97Q6_IErnA"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_PwE8xD24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PwGx8D24EeSU97Q6_IErnA" name="getCurrentTime" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_PwGx8T24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Pp_i4D24EeSU97Q6_IErnA" name="core">
+        <packagedElement xmi:type="uml:Class" xmi:id="_PqDNQD24EeSU97Q6_IErnA" name="ProgramDecoder">
+          <ownedOperation xmi:id="_PwInID24EeSU97Q6_IErnA" name="decodeInstruction" visibility="public" isStatic="true">
+            <ownedComment xmi:id="_PwKcUD24EeSU97Q6_IErnA">
+              <body>/** 
+ * decode the language code into binary code
+ * @param ins
+ * @return
+ */
+</body>
+            </ownedComment>
+            <ownedParameter xmi:id="_PwInIT24EeSU97Q6_IErnA" name="ins">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_PwInIj24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PqOMYD24EeSU97Q6_IErnA" name="Register">
+          <ownedComment xmi:id="_PqWIMD24EeSU97Q6_IErnA">
+            <body>/** 
+ * @author yangmang
+ */
+</body>
+          </ownedComment>
+          <ownedAttribute xmi:id="_PwM4kD24EeSU97Q6_IErnA" name="name" visibility="protected">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_PwQi8D24EeSU97Q6_IErnA" name="data" visibility="protected">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PwQi8T24EeSU97Q6_IErnA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PwQi8j24EeSU97Q6_IErnA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_PwU0YD24EeSU97Q6_IErnA" name="size" visibility="protected">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedAttribute>
+          <ownedOperation xmi:id="_PwXQoD24EeSU97Q6_IErnA" name="read" visibility="public">
+            <ownedParameter xmi:id="_PwXQoT24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PwaT8D24EeSU97Q6_IErnA" name="write" visibility="public">
+            <ownedComment xmi:id="_PwcwMD24EeSU97Q6_IErnA">
+              <body>/** 
+ * write input information into Register &lt;br>if in.length&lt;size: copy all bits from $in$ and set the left to 0 &lt;br>if in.length>size: copy only the $size$ bits of $in$ and ignore the others
+ * @param in
+ */
+</body>
+            </ownedComment>
+            <ownedParameter xmi:id="_PwaT8T24EeSU97Q6_IErnA" name="in">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PwaT8j24EeSU97Q6_IErnA" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PwaT8z24EeSU97Q6_IErnA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PwdXQD24EeSU97Q6_IErnA" name="intValue" visibility="public">
+            <ownedParameter xmi:id="_PwdXQT24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PwgakD24EeSU97Q6_IErnA" name="setValueByInt" visibility="public">
+            <ownedParameter xmi:id="_PwgakT24EeSU97Q6_IErnA" name="value">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PwkE8D24EeSU97Q6_IErnA" name="addValueByInt" visibility="public">
+            <ownedParameter xmi:id="_PwkE8T24EeSU97Q6_IErnA" name="value">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PwnvUD24EeSU97Q6_IErnA" name="subValue" visibility="public">
+            <ownedParameter xmi:id="_PwnvUT24EeSU97Q6_IErnA" name="index">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_PwnvUj24EeSU97Q6_IErnA" name="size">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_PwnvUz24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PwqyoD24EeSU97Q6_IErnA" name="getBinaryString" visibility="public">
+            <ownedParameter xmi:id="_PwqyoT24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PqXWUD24EeSU97Q6_IErnA" name="Setting">
+          <ownedAttribute xmi:id="_Pwt18D24EeSU97Q6_IErnA" name="WORD_SIZE" visibility="public" isStatic="true" isReadOnly="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Pwt18T24EeSU97Q6_IErnA" value="18"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_PwvEED24EeSU97Q6_IErnA" name="MEM_WORD_LENGTH" visibility="public" isStatic="true" isReadOnly="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_PwvEET24EeSU97Q6_IErnA" value="2048"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PqZLgD24EeSU97Q6_IErnA" name="ROMLoader"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PqhuYD24EeSU97Q6_IErnA" name="CPU">
+          <ownedAttribute xmi:id="_Pw4OAD24EeSU97Q6_IErnA" name="_instance" visibility="private" isStatic="true" type="_PqhuYD24EeSU97Q6_IErnA" association="_P3fzYD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_PxLI8D24EeSU97Q6_IErnA" name="registers" visibility="private" type="_PxB_AD24EeSU97Q6_IErnA">
+            <ownedComment xmi:id="_PxUS4D24EeSU97Q6_IErnA">
+              <body>/** 
+ * hi all registers are stored here
+ */
+</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_PxeD4D24EeSU97Q6_IErnA" name="memory" visibility="private" type="_Pq3soD24EeSU97Q6_IErnA" association="_P3gacT24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_Pxxl4D24EeSU97Q6_IErnA" name="log" visibility="private" type="_PrmscD24EeSU97Q6_IErnA" association="_P3gacz24EeSU97Q6_IErnA"/>
+          <ownedOperation xmi:id="_Px798D24EeSU97Q6_IErnA" name="getInstance" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_Px798T24EeSU97Q6_IErnA" name="return" type="_PqhuYD24EeSU97Q6_IErnA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PyG9ED24EeSU97Q6_IErnA" name="addRegister" visibility="private">
+            <ownedParameter xmi:id="_PyG9ET24EeSU97Q6_IErnA" name="name">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_PyG9Ej24EeSU97Q6_IErnA" name="size">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PyR8MD24EeSU97Q6_IErnA" name="execute" visibility="public"/>
+          <ownedOperation xmi:id="_PycUQD24EeSU97Q6_IErnA" name="executeNextInstruction" visibility="private"/>
+          <ownedOperation xmi:id="_PynTYD24EeSU97Q6_IErnA" name="executeOneCircle" visibility="private">
+            <ownedComment xmi:id="_PyxEYD24EeSU97Q6_IErnA">
+              <body>/** 
+ * @param circle
+ * @throws IllegalMemoryAddressException
+ * @throws RegisterNotFoundException 
+ */
+</body>
+            </ownedComment>
+            <ownedParameter xmi:id="_Pyn6cD24EeSU97Q6_IErnA" name="circle" type="_PrQHID24EeSU97Q6_IErnA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PyzgoD24EeSU97Q6_IErnA" name="doCpuDecode" visibility="private">
+            <ownedParameter xmi:id="_PyzgoT24EeSU97Q6_IErnA" name="msg" type="_PyySgD24EeSU97Q6_IErnA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_Py94sD24EeSU97Q6_IErnA" name="getRegister" visibility="private">
+            <ownedComment xmi:id="_PzIQwD24EeSU97Q6_IErnA">
+              <body>/** 
+ * this method return the register by specific name &lt;br>if name=&quot;R&quot;, Rn will be returned (n is decided by R-register's value) &lt;br>so does &quot;IX&quot; &lt;br>R-register and IX-register can be got by 'getRegisterByRealName(name)'
+ * @param name
+ * @return Register of $registerRealName$
+ * @throws RegisterNotFoundException if no register is found with $registerRealName$
+ */
+</body>
+            </ownedComment>
+            <ownedParameter xmi:id="_Py94sT24EeSU97Q6_IErnA" name="name">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_Py94sj24EeSU97Q6_IErnA" name="return" type="_PqOMYD24EeSU97Q6_IErnA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PzI30D24EeSU97Q6_IErnA" name="getRegisterByRealName" visibility="private">
+            <ownedComment xmi:id="_PzRasD24EeSU97Q6_IErnA">
+              <body>/** 
+ * @param registerRealName
+ * @return Register of $registerRealName$
+ * @throws RegisterNotFoundException if no register is found with $registerRealName$
+ */
+</body>
+            </ownedComment>
+            <ownedParameter xmi:id="_PzI30T24EeSU97Q6_IErnA" name="registerRealName">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_PzI30j24EeSU97Q6_IErnA" name="return" type="_PqOMYD24EeSU97Q6_IErnA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PzSBwD24EeSU97Q6_IErnA" name="getRegisters" visibility="public">
+            <ownedParameter xmi:id="_PzSBwT24EeSU97Q6_IErnA" name="return" type="_PtOdET24EeSU97Q6_IErnA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PzZWgD24EeSU97Q6_IErnA" name="getRegisterSize" visibility="public">
+            <ownedParameter xmi:id="_PzZWgT24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Pq3soD24EeSU97Q6_IErnA" name="Memory">
+          <ownedAttribute xmi:id="_PzhSUD24EeSU97Q6_IErnA" name="_instance" visibility="private" isStatic="true" type="_Pq3soD24EeSU97Q6_IErnA" association="_P3hBgD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_PzjukD24EeSU97Q6_IErnA" name="memData" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PzjukT24EeSU97Q6_IErnA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Pzjukj24EeSU97Q6_IErnA"/>
+          </ownedAttribute>
+          <ownedOperation xmi:id="_Pzk8sD24EeSU97Q6_IErnA" name="readWord" visibility="public">
+            <ownedParameter xmi:id="_Pzk8sT24EeSU97Q6_IErnA" name="index">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_Pzk8sj24EeSU97Q6_IErnA" name="return" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PznY8D24EeSU97Q6_IErnA" name="writeWord" visibility="public">
+            <ownedParameter xmi:id="_PznY8T24EeSU97Q6_IErnA" name="index">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_PznY8j24EeSU97Q6_IErnA" name="data">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PznY8z24EeSU97Q6_IErnA" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PznY9D24EeSU97Q6_IErnA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PzpOID24EeSU97Q6_IErnA" name="getInstance" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_PzpOIT24EeSU97Q6_IErnA" name="return" type="_Pq3soD24EeSU97Q6_IErnA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_PzqcQD24EeSU97Q6_IErnA" name="initInstance" visibility="private" isStatic="true"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_Pq6I4D24EeSU97Q6_IErnA" name="basic">
+          <packagedElement xmi:type="uml:Class" xmi:id="_Pq7XAD24EeSU97Q6_IErnA" name="Word">
+            <ownedAttribute xmi:id="_PzsRcD24EeSU97Q6_IErnA" name="data" visibility="public">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PzsRcT24EeSU97Q6_IErnA" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PzsRcj24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedOperation xmi:id="_Pzs4gD24EeSU97Q6_IErnA" name="intValue" visibility="public">
+              <ownedParameter xmi:id="_Pzs4gT24EeSU97Q6_IErnA" name="return" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_Pq_ocD24EeSU97Q6_IErnA" name="InstructionSet">
+            <ownedComment xmi:id="_PrKnkD24EeSU97Q6_IErnA">
+              <body>/** 
+ * All the instructions will be defined in this class, including: &lt;br> name,code and every step(circle)
+ * @author yangmang
+ */
+</body>
+            </ownedComment>
+            <ownedAttribute xmi:id="_Pzv70D24EeSU97Q6_IErnA" name="_instance" visibility="private" isStatic="true" type="_Pq_ocD24EeSU97Q6_IErnA" association="_P3hBgj24EeSU97Q6_IErnA"/>
+            <ownedAttribute xmi:id="_Pz2pgD24EeSU97Q6_IErnA" name="name2code" visibility="private" type="_PzzmMD24EeSU97Q6_IErnA">
+              <ownedComment xmi:id="_Pz5s0D24EeSU97Q6_IErnA">
+                <body>/** 
+ * map for finding code by name
+ */
+</body>
+              </ownedComment>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_Pz9XMD24EeSU97Q6_IErnA" name="code2instrs" visibility="private" type="_Pz6T4D24EeSU97Q6_IErnA">
+              <ownedComment xmi:id="_Pz_zcD24EeSU97Q6_IErnA">
+                <body>/** 
+ * map for finding InstructionCircles by code
+ */
+</body>
+              </ownedComment>
+            </ownedAttribute>
+            <ownedOperation xmi:id="_P0AagD24EeSU97Q6_IErnA" name="getInstance" visibility="public" isStatic="true">
+              <ownedParameter xmi:id="_P0AagT24EeSU97Q6_IErnA" name="return" type="_Pq_ocD24EeSU97Q6_IErnA" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0Dd0D24EeSU97Q6_IErnA" name="setLDR" visibility="private">
+              <ownedComment xmi:id="_P0GhID24EeSU97Q6_IErnA">
+                <body>/** 
+ * LDR: Load Register From Memory 01
+ */
+</body>
+              </ownedComment>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0GhIT24EeSU97Q6_IErnA" name="setSTR" visibility="private">
+              <ownedComment xmi:id="_P0I9YD24EeSU97Q6_IErnA">
+                <body>/** 
+ * Store Register To Memory 02
+ */
+</body>
+              </ownedComment>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0JkcD24EeSU97Q6_IErnA" name="setLDA" visibility="private">
+              <ownedComment xmi:id="_P0MAsD24EeSU97Q6_IErnA">
+                <body>/** 
+ * Load Register with Address 3
+ */
+</body>
+              </ownedComment>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0MAsT24EeSU97Q6_IErnA" name="setAMR" visibility="private">
+              <ownedComment xmi:id="_P0Oc8D24EeSU97Q6_IErnA">
+                <body>/** 
+ * Add Memory To Register 4
+ */
+</body>
+              </ownedComment>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0PEAD24EeSU97Q6_IErnA" name="setSMR" visibility="private">
+              <ownedComment xmi:id="_P0RgQD24EeSU97Q6_IErnA">
+                <body>/** 
+ * Subtract Memory From Register 5
+ */
+</body>
+              </ownedComment>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0RgQT24EeSU97Q6_IErnA" name="setAIR" visibility="private">
+              <ownedComment xmi:id="_P0T8gD24EeSU97Q6_IErnA">
+                <body>/** 
+ * Add  Immediate to Register 6
+ */
+</body>
+              </ownedComment>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0UjkD24EeSU97Q6_IErnA" name="setSIR" visibility="private">
+              <ownedComment xmi:id="_P0WYwD24EeSU97Q6_IErnA">
+                <body>/** 
+ * Subtract  Immediate  from Register 7
+ */
+</body>
+              </ownedComment>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0W_0D24EeSU97Q6_IErnA" name="setLDX" visibility="private"/>
+            <ownedOperation xmi:id="_P0ZcED24EeSU97Q6_IErnA" name="setSTX" visibility="private"/>
+            <ownedOperation xmi:id="_P0b4UD24EeSU97Q6_IErnA" name="getCircles" visibility="public" isStatic="true">
+              <ownedParameter xmi:id="_P0b4UT24EeSU97Q6_IErnA" name="name">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_P0b4Uj24EeSU97Q6_IErnA" name="return" type="_PrMcwD24EeSU97Q6_IErnA" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0eUkD24EeSU97Q6_IErnA" name="getCircles" visibility="public" isStatic="true">
+              <ownedParameter xmi:id="_P0eUkT24EeSU97Q6_IErnA" name="code">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_P0eUkj24EeSU97Q6_IErnA" name="return" type="_PrMcwD24EeSU97Q6_IErnA" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0gw0D24EeSU97Q6_IErnA" name="getCodeOfInstruction" visibility="public" isStatic="true">
+              <ownedComment xmi:id="_P0imAD24EeSU97Q6_IErnA">
+                <body>/** 
+ * @param name
+ * @return
+ */
+</body>
+              </ownedComment>
+              <ownedParameter xmi:id="_P0gw0T24EeSU97Q6_IErnA" name="name">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_P0gw0j24EeSU97Q6_IErnA" name="return" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_PrMcwD24EeSU97Q6_IErnA" name="InstructionCircles">
+            <ownedAttribute xmi:id="_P0j0ID24EeSU97Q6_IErnA" name="circles" visibility="private" type="_P0jNED24EeSU97Q6_IErnA"/>
+            <ownedAttribute xmi:id="_P0lpUD24EeSU97Q6_IErnA" name="_commonBeginning" visibility="private" isStatic="true" type="_PrMcwD24EeSU97Q6_IErnA" association="_P3hBhD24EeSU97Q6_IErnA"/>
+            <ownedOperation xmi:id="_P0m3cD24EeSU97Q6_IErnA" name="addCircle" visibility="public">
+              <ownedParameter xmi:id="_P0m3cT24EeSU97Q6_IErnA" name="circle" type="_PrQHID24EeSU97Q6_IErnA"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0negD24EeSU97Q6_IErnA" name="addCommonEndingCircles" visibility="public"/>
+            <ownedOperation xmi:id="_P0osoD24EeSU97Q6_IErnA" name="getCircles" visibility="public">
+              <ownedParameter xmi:id="_P0osoT24EeSU97Q6_IErnA" name="return" type="_PtQSQT24EeSU97Q6_IErnA" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_P0pTsD24EeSU97Q6_IErnA" name="getCommonBeginning" visibility="public" isStatic="true">
+              <ownedParameter xmi:id="_P0p6wD24EeSU97Q6_IErnA" name="return" type="_PrMcwD24EeSU97Q6_IErnA" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_PrQHID24EeSU97Q6_IErnA" name="InstructionCircle">
+            <ownedAttribute xmi:id="_P0rI4D24EeSU97Q6_IErnA" name="TYPE_REG2REG" visibility="public" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P0rI4T24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P0sXAD24EeSU97Q6_IErnA" name="TYPE_MEM2REG" visibility="public" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P0sXAT24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P0tlID24EeSU97Q6_IErnA" name="TYPE_REG2MEM" visibility="public" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P0tlIT24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P0uzQD24EeSU97Q6_IErnA" name="TYPE_DECODE" visibility="public" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P0uzQT24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P0wBYD24EeSU97Q6_IErnA" name="TYPE_CALCULATE_EA" visibility="public" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P0wBYT24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P0xPgD24EeSU97Q6_IErnA" name="TYPE_ALU_EXCUTE" visibility="public" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P0xPgT24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P0ydoD24EeSU97Q6_IErnA" name="TYPE_PC_PLUS" visibility="public" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P0ydoT24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P0zrwD24EeSU97Q6_IErnA" name="TYPE_CALCULATE_MBR_FOR_EXCUTE" visibility="public" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P0zrwT24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P01g8D24EeSU97Q6_IErnA" name="TYPE_LOAD_OP1_AND_OP2" visibility="public" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P01g8T24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P02vED24EeSU97Q6_IErnA" name="type" visibility="public">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_P039MD24EeSU97Q6_IErnA" name="args" visibility="public">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P039MT24EeSU97Q6_IErnA" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P039Mj24EeSU97Q6_IErnA"/>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_P3hBgj24EeSU97Q6_IErnA" memberEnd="_Pzv70D24EeSU97Q6_IErnA _P3hBgz24EeSU97Q6_IErnA">
+            <ownedEnd xmi:id="_P3hBgz24EeSU97Q6_IErnA" name="InstructionSet" type="_Pq_ocD24EeSU97Q6_IErnA" association="_P3hBgj24EeSU97Q6_IErnA"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_P3hBhD24EeSU97Q6_IErnA" memberEnd="_P0lpUD24EeSU97Q6_IErnA _P3hBhT24EeSU97Q6_IErnA">
+            <ownedEnd xmi:id="_P3hBhT24EeSU97Q6_IErnA" name="InstructionCircles" type="_PrMcwD24EeSU97Q6_IErnA" association="_P3hBhD24EeSU97Q6_IErnA"/>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3fzYD24EeSU97Q6_IErnA" memberEnd="_Pw4OAD24EeSU97Q6_IErnA _P3gacD24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3gacD24EeSU97Q6_IErnA" name="CPU" type="_PqhuYD24EeSU97Q6_IErnA" association="_P3fzYD24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3gacT24EeSU97Q6_IErnA" memberEnd="_PxeD4D24EeSU97Q6_IErnA _P3gacj24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3gacj24EeSU97Q6_IErnA" name="CPU" type="_PqhuYD24EeSU97Q6_IErnA" association="_P3gacT24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3gacz24EeSU97Q6_IErnA" memberEnd="_Pxxl4D24EeSU97Q6_IErnA _P3gadD24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3gadD24EeSU97Q6_IErnA" name="CPU" type="_PqhuYD24EeSU97Q6_IErnA" association="_P3gacz24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3hBgD24EeSU97Q6_IErnA" memberEnd="_PzhSUD24EeSU97Q6_IErnA _P3hBgT24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3hBgT24EeSU97Q6_IErnA" name="Memory" type="_Pq3soD24EeSU97Q6_IErnA" association="_P3hBgD24EeSU97Q6_IErnA"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_PrRVQD24EeSU97Q6_IErnA" name="exception">
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrTKcD24EeSU97Q6_IErnA" name="RegisterNotFoundException">
+          <generalization xmi:id="_P05LUT24EeSU97Q6_IErnA" general="_P05LUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P05yYD24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P06ZcD24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P05yYT24EeSU97Q6_IErnA"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrU_oD24EeSU97Q6_IErnA" name="IllegalInstructionCodeException">
+          <generalization xmi:id="_P06ZcT24EeSU97Q6_IErnA" general="_P05LUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P07AgD24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P07nkD24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrXb4D24EeSU97Q6_IErnA" name="IllegalMemoryAddressException">
+          <generalization xmi:id="_P07nkT24EeSU97Q6_IErnA" general="_P05LUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P08OoD24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P081sD24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P08OoT24EeSU97Q6_IErnA"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrZRED24EeSU97Q6_IErnA" name="InstructionExecuteException">
+          <generalization xmi:id="_P081sT24EeSU97Q6_IErnA" general="_P05LUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P09cwD24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P09cwT24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrafMD24EeSU97Q6_IErnA" name="IllegalTrapCodeException">
+          <generalization xmi:id="_P0-D0D24EeSU97Q6_IErnA" general="_P05LUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P0-D0T24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P0-q4D24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrcUYD24EeSU97Q6_IErnA" name="IllegalOperationCodeException">
+          <generalization xmi:id="_P0-q4T24EeSU97Q6_IErnA" general="_P05LUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P0_R8D24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P0_5AD24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P0_R8T24EeSU97Q6_IErnA"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_P05LUD24EeSU97Q6_IErnA" name="Exception"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Prc7cD24EeSU97Q6_IErnA" name="frame">
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrhM4D24EeSU97Q6_IErnA" name="MainFrame" clientDependency="_P1F_oD24EeSU97Q6_IErnA">
+          <generalization xmi:id="_P1HNwD24EeSU97Q6_IErnA" general="_P1GmsD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1JqAD24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P1LfMD24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P1JqAT24EeSU97Q6_IErnA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_P1NUYD24EeSU97Q6_IErnA" name="codeLoaderPanel" visibility="private" type="_PtSHcj24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1QXsD24EeSU97Q6_IErnA" name="actionPanel" visibility="private" type="_PtSHcj24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1Sz8D24EeSU97Q6_IErnA" name="consolePanel" visibility="private" type="_PrqW0D24EeSU97Q6_IErnA" association="_P3hokD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1V3QD24EeSU97Q6_IErnA" name="registerPanel" visibility="private" type="_PrvPUD24EeSU97Q6_IErnA" association="_P3hokj24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1YTgD24EeSU97Q6_IErnA" name="memoryPanel" visibility="private" type="_Pr6OcD24EeSU97Q6_IErnA" association="_P3holD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1avwD24EeSU97Q6_IErnA" name="reset" visibility="private" type="_PtSHcD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1dzED24EeSU97Q6_IErnA" name="run" visibility="private" type="_PtSHcD24EeSU97Q6_IErnA"/>
+          <interfaceRealization xmi:id="_P1F_oD24EeSU97Q6_IErnA" name="Observer" supplier="_P1C8UD24EeSU97Q6_IErnA" client="_PrhM4D24EeSU97Q6_IErnA" contract="_P1C8UD24EeSU97Q6_IErnA"/>
+          <ownedOperation xmi:id="_P1fBMD24EeSU97Q6_IErnA" name="addListener" visibility="private"/>
+          <ownedOperation xmi:id="_P1g2YD24EeSU97Q6_IErnA" name="main" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_P1g2YT24EeSU97Q6_IErnA" name="args">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P1g2Yj24EeSU97Q6_IErnA" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P1g2Yz24EeSU97Q6_IErnA"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_P1jSoD24EeSU97Q6_IErnA" name="update" visibility="public">
+            <ownedParameter xmi:id="_P1jSoT24EeSU97Q6_IErnA" name="o" type="_PtRgYT24EeSU97Q6_IErnA"/>
+            <ownedParameter xmi:id="_P1jSoj24EeSU97Q6_IErnA" name="arg" type="_P1irkD24EeSU97Q6_IErnA"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrmscD24EeSU97Q6_IErnA" name="Log">
+          <generalization xmi:id="_P1lH0D24EeSU97Q6_IErnA" general="_P1kgwD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1lu4D24EeSU97Q6_IErnA" name="_instance" visibility="private" isStatic="true" type="_PrmscD24EeSU97Q6_IErnA" association="_P3iPoD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1m9AD24EeSU97Q6_IErnA" name="consoleMessage" visibility="private" type="_P1mV8D24EeSU97Q6_IErnA"/>
+          <ownedOperation xmi:id="_P1nkED24EeSU97Q6_IErnA" name="getInstance" visibility="public" isStatic="true">
+            <ownedParameter xmi:id="_P1nkET24EeSU97Q6_IErnA" name="return" type="_PrmscD24EeSU97Q6_IErnA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_P1oLID24EeSU97Q6_IErnA" name="console" visibility="public">
+            <ownedParameter xmi:id="_P1oLIT24EeSU97Q6_IErnA" name="info">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_P1pZQD24EeSU97Q6_IErnA" name="getConsoleMessage" visibility="public">
+            <ownedParameter xmi:id="_P1pZQT24EeSU97Q6_IErnA" name="return" type="_PtVKwT24EeSU97Q6_IErnA" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrqW0D24EeSU97Q6_IErnA" name="ConsolePanel">
+          <generalization xmi:id="_P1qAUT24EeSU97Q6_IErnA" general="_P1qAUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1rOcD24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P1r1gD24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P1rOcT24EeSU97Q6_IErnA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_P1sckD24EeSU97Q6_IErnA" name="log" visibility="private" type="_PrmscD24EeSU97Q6_IErnA" association="_P3iPoj24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1uRwD24EeSU97Q6_IErnA" name="text" visibility="private" type="_PtWY4D24EeSU97Q6_IErnA"/>
+          <ownedOperation xmi:id="_P1vf4D24EeSU97Q6_IErnA" name="update" visibility="public"/>
+          <ownedOperation xmi:id="_P1wuAD24EeSU97Q6_IErnA" name="addMessage" visibility="private">
+            <ownedParameter xmi:id="_P1wuAT24EeSU97Q6_IErnA" name="content">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_PrvPUD24EeSU97Q6_IErnA" name="RegisterPanel">
+          <generalization xmi:id="_P1x8ID24EeSU97Q6_IErnA" general="_P1qAUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P1zKQD24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P1zxUD24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P1zKQT24EeSU97Q6_IErnA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_P10_cD24EeSU97Q6_IErnA" name="cpu" visibility="private" type="_PqhuYD24EeSU97Q6_IErnA" association="_P3iPpD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P120oD24EeSU97Q6_IErnA" name="js" visibility="private" type="_PtVx0j24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P15Q4D24EeSU97Q6_IErnA" name="table" visibility="private" type="_PtbRYD24EeSU97Q6_IErnA"/>
+          <ownedOperation xmi:id="_P16fAD24EeSU97Q6_IErnA" name="update" visibility="public"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Pr0u4D24EeSU97Q6_IErnA" name="CodeLoader">
+          <generalization xmi:id="_P17GED24EeSU97Q6_IErnA" general="_P1qAUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P187QD24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P1-wcD24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_P2BMsD24EeSU97Q6_IErnA" name="code" visibility="private" type="_PtgJ4j24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P2E3ED24EeSU97Q6_IErnA" name="binCode" visibility="private" type="_PtgJ4j24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P2JvkD24EeSU97Q6_IErnA" name="js" visibility="private" type="_PtVx0j24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P2NZ8D24EeSU97Q6_IErnA" name="action" visibility="private" type="_P1qAUD24EeSU97Q6_IErnA" association="_P3iPpj24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P2REUD24EeSU97Q6_IErnA" name="clear" visibility="private" type="_PtSHcD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P2UHoD24EeSU97Q6_IErnA" name="load" visibility="private" type="_PtSHcD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P2XyAD24EeSU97Q6_IErnA" name="log" visibility="private" type="_PrmscD24EeSU97Q6_IErnA" association="_P3i2sT24EeSU97Q6_IErnA"/>
+          <ownedOperation xmi:id="_P2aOQD24EeSU97Q6_IErnA" name="addListener" visibility="private"/>
+          <ownedOperation xmi:id="_P2cDcD24EeSU97Q6_IErnA" name="updateBinaryCode" visibility="private"/>
+          <ownedOperation xmi:id="_P2d4oD24EeSU97Q6_IErnA" name="loadBinaryCodeIntoMemory" visibility="private"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Pr6OcD24EeSU97Q6_IErnA" name="MemoryPanel">
+          <generalization xmi:id="_P2ft0D24EeSU97Q6_IErnA" general="_P1qAUD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P2g78D24EeSU97Q6_IErnA" name="serialVersionUID" visibility="private" isStatic="true" isReadOnly="true">
+            <ownedComment xmi:id="_P2hjAD24EeSU97Q6_IErnA">
+              <body>/** 
+ */
+</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_P2g78T24EeSU97Q6_IErnA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_P2ixID24EeSU97Q6_IErnA" name="js" visibility="private" type="_PtVx0j24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P2kmUD24EeSU97Q6_IErnA" name="table" visibility="private" type="_PtbRYD24EeSU97Q6_IErnA"/>
+          <ownedAttribute xmi:id="_P2mbgD24EeSU97Q6_IErnA" name="memory" visibility="private" type="_Pq3soD24EeSU97Q6_IErnA" association="_P3i2sz24EeSU97Q6_IErnA"/>
+          <ownedOperation xmi:id="_P2npoD24EeSU97Q6_IErnA" name="update" visibility="public"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_P1C8UD24EeSU97Q6_IErnA" name="Observer"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_P1GmsD24EeSU97Q6_IErnA" name="JFrame"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_P1kgwD24EeSU97Q6_IErnA" name="Observable"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_P1qAUD24EeSU97Q6_IErnA" name="JPanel"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3hokD24EeSU97Q6_IErnA" memberEnd="_P1Sz8D24EeSU97Q6_IErnA _P3hokT24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3hokT24EeSU97Q6_IErnA" name="MainFrame" type="_PrhM4D24EeSU97Q6_IErnA" association="_P3hokD24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3hokj24EeSU97Q6_IErnA" memberEnd="_P1V3QD24EeSU97Q6_IErnA _P3hokz24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3hokz24EeSU97Q6_IErnA" name="MainFrame" type="_PrhM4D24EeSU97Q6_IErnA" association="_P3hokj24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3holD24EeSU97Q6_IErnA" memberEnd="_P1YTgD24EeSU97Q6_IErnA _P3holT24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3holT24EeSU97Q6_IErnA" name="MainFrame" type="_PrhM4D24EeSU97Q6_IErnA" association="_P3holD24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3iPoD24EeSU97Q6_IErnA" memberEnd="_P1lu4D24EeSU97Q6_IErnA _P3iPoT24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3iPoT24EeSU97Q6_IErnA" name="Log" type="_PrmscD24EeSU97Q6_IErnA" association="_P3iPoD24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3iPoj24EeSU97Q6_IErnA" memberEnd="_P1sckD24EeSU97Q6_IErnA _P3iPoz24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3iPoz24EeSU97Q6_IErnA" name="ConsolePanel" type="_PrqW0D24EeSU97Q6_IErnA" association="_P3iPoj24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3iPpD24EeSU97Q6_IErnA" memberEnd="_P10_cD24EeSU97Q6_IErnA _P3iPpT24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3iPpT24EeSU97Q6_IErnA" name="RegisterPanel" type="_PrvPUD24EeSU97Q6_IErnA" association="_P3iPpD24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3iPpj24EeSU97Q6_IErnA" memberEnd="_P2NZ8D24EeSU97Q6_IErnA _P3i2sD24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3i2sD24EeSU97Q6_IErnA" name="CodeLoader" type="_Pr0u4D24EeSU97Q6_IErnA" association="_P3iPpj24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3i2sT24EeSU97Q6_IErnA" memberEnd="_P2XyAD24EeSU97Q6_IErnA _P3i2sj24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3i2sj24EeSU97Q6_IErnA" name="CodeLoader" type="_Pr0u4D24EeSU97Q6_IErnA" association="_P3i2sT24EeSU97Q6_IErnA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_P3i2sz24EeSU97Q6_IErnA" memberEnd="_P2mbgD24EeSU97Q6_IErnA _P3i2tD24EeSU97Q6_IErnA">
+          <ownedEnd xmi:id="_P3i2tD24EeSU97Q6_IErnA" name="MemoryPanel" type="_Pr6OcD24EeSU97Q6_IErnA" association="_P3i2sz24EeSU97Q6_IErnA"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_PtKysD24EeSU97Q6_IErnA" name="java">
+    <packagedElement xmi:type="uml:Package" xmi:id="_PtKysT24EeSU97Q6_IErnA" name="text">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtNO8D24EeSU97Q6_IErnA" name="Format"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtNO8T24EeSU97Q6_IErnA" name="SimpleDateFormat"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_PtNO8j24EeSU97Q6_IErnA" name="util">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtNO8z24EeSU97Q6_IErnA" name="Date"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtN2AD24EeSU97Q6_IErnA" name="StringTokenizer"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtOdED24EeSU97Q6_IErnA" name="HashMap"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtOdET24EeSU97Q6_IErnA" name="Map"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtQSQD24EeSU97Q6_IErnA" name="ArrayList"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtQSQT24EeSU97Q6_IErnA" name="List"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtRgYT24EeSU97Q6_IErnA" name="Observable"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtRgYj24EeSU97Q6_IErnA" name="Observer"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtVKwD24EeSU97Q6_IErnA" name="LinkedList"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtVKwT24EeSU97Q6_IErnA" name="Queue"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_PtQ5UD24EeSU97Q6_IErnA" name="awt">
+      <packagedElement xmi:type="uml:Package" xmi:id="_PtQ5UT24EeSU97Q6_IErnA" name="event">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtQ5Uj24EeSU97Q6_IErnA" name="MouseEvent"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtRgYD24EeSU97Q6_IErnA" name="MouseListener"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Pte7wD24EeSU97Q6_IErnA" name="KeyEvent"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Ptfi0D24EeSU97Q6_IErnA" name="KeyListener"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Ptfi0T24EeSU97Q6_IErnA" name="MouseAdapter"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtVx0D24EeSU97Q6_IErnA" name="Color"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtVx0T24EeSU97Q6_IErnA" name="GridLayout"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtaqUD24EeSU97Q6_IErnA" name="BorderLayout"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_Ptfi0j24EeSU97Q6_IErnA" name="io">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_Ptfi0z24EeSU97Q6_IErnA" name="BufferedReader"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtgJ4D24EeSU97Q6_IErnA" name="IOException"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtgJ4T24EeSU97Q6_IErnA" name="StringReader"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_PtRgYz24EeSU97Q6_IErnA" name="javax">
+    <packagedElement xmi:type="uml:Package" xmi:id="_PtRgZD24EeSU97Q6_IErnA" name="swing">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtRgZT24EeSU97Q6_IErnA" name="Box"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtSHcD24EeSU97Q6_IErnA" name="JButton"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtSHcT24EeSU97Q6_IErnA" name="JFrame"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtSHcj24EeSU97Q6_IErnA" name="JPanel"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_PtSHcz24EeSU97Q6_IErnA" name="border">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtSHdD24EeSU97Q6_IErnA" name="TitledBorder"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtVx0j24EeSU97Q6_IErnA" name="JScrollPane"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtWY4D24EeSU97Q6_IErnA" name="JTextPane"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_PtWY4T24EeSU97Q6_IErnA" name="text">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtWY4j24EeSU97Q6_IErnA" name="BadLocationException"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtWY4z24EeSU97Q6_IErnA" name="Document"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtWY5D24EeSU97Q6_IErnA" name="SimpleAttributeSet"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtW_8D24EeSU97Q6_IErnA" name="StyleConstants"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtbRYD24EeSU97Q6_IErnA" name="JTable"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_PtbRYT24EeSU97Q6_IErnA" name="table">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtbRYj24EeSU97Q6_IErnA" name="DefaultTableModel"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtbRYz24EeSU97Q6_IErnA" name="TableColumn"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PtwBgD24EeSU97Q6_IErnA" name="DefaultTableCellRenderer"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtgJ4j24EeSU97Q6_IErnA" name="JTextArea"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_PtvacD24EeSU97Q6_IErnA" name="JLabel"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_PxB_AD24EeSU97Q6_IErnA" name="Map&lt;String,Register>"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_PyySgD24EeSU97Q6_IErnA" name="StringBuffer"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_PzzmMD24EeSU97Q6_IErnA" name="Map&lt;String,Integer>"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_Pz6T4D24EeSU97Q6_IErnA" name="Map&lt;Integer,InstructionCircles>"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_P0jNED24EeSU97Q6_IErnA" name="List&lt;InstructionCircle>"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_P1irkD24EeSU97Q6_IErnA" name="Object"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_P1mV8D24EeSU97Q6_IErnA" name="Queue&lt;String>"/>
+</uml:Model>

@@ -1,0 +1,56 @@
+What need to implement:
+1. Load instructions from a file
+2. All instructions
+3. Program 2
+   A program that reads a set of a paragraph of 6 sentences from a file 
+   into memory. It prints the sentences on the console printer. 
+   It then asks the user for a word. 
+   It searches the paragraph to see if it contains the word.
+   If so, it prints out the word, the sentence number, 
+   and the word number in the sentence.
+4. TRAP & HLT
+5. Machine Fault
+   The possible machine faults that are predefined are:
+   ID	Fault
+   0	Illegal Memory Address
+   1	Illegal TRAP code
+   2	Illegal Operation Code
+   
+Your simulator, packaged as a JAR file, running program 2
+Load instructions from a file.
+Simple documentation describing how to use your simulator, 
+what the console layout is and how to operate it. 
+Include source code for program 2.
+File containing program 2 as machine code.
+Your team’s design notes
+Source code – well documented.
+Demonstration that Program 2 works.
+ 
+Reserved Locations:
+Memory Address 		Usage
+0			Reserved for the Trap instruction for Part III.
+1			Reserved for a machine fault (see below).
+2			Store PC for Trap
+3			Not Used
+4			Store PC for Machine Fault
+5			Not Used 
+ 
+ Implement TRAP code- 030
+           HLT - 000 Stop the machine.
+ 
+Machine Fault (Part III):
+An erroneous condition in the machine will cause a machine fault. 
+The machine traps to memory address 1, 
+which contains the address of a routine to handle machine faults. 
+Your simulator must check for faults.
+
+When a Trap instruction or a machine fault occurs, 
+the processor saves the current PC and MSR contents to the locations specified above, 
+then fetches the address from Location 0 (Trap) or 1 (Machine Fault) 
+into the PC which becomes the next instruction to be executed. 
+This address will be the first instruction of a routine 
+which handles the trap or machine fault.
+
+
+
+ 
