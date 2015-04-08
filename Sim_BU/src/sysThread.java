@@ -31,7 +31,7 @@ public class sysThread extends Thread {
 	sysThread(CPU cpu)
 	{
 		this.Father=cpu;
-		Sleep=this.Father.getFreq();
+		Sleep=this.Father.clockFreq;
 	}
 	
 	public static void main(String[] args)
