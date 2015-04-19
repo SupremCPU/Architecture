@@ -473,25 +473,27 @@ public class InstructionSet {
 	 */
 	private void setFADD(){
 		InstructionCircles circles = new InstructionCircles();
-		//circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_LOAD_OP1_AND_OP2,"RX","RY"));
-		//circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_ALU_EXECUTE));
-		//circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_REG2REG,"RX","RES"));
-		//circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_REG2REG,"RX+1","RES"));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_CALCULATE_EA_TO_MAR));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_MEM2REG,"MBR","MAR"));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_LOAD_F1_AND_F2,"FR","MBR"));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_FALU_EXECUTE));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_REG2REG,"FR","fRES"));
 		circles.addCommonEndingCircles();
 		
 		putCirclesIntoMaps("FADD",circles);
 	}
-	
+
 	/**
 	 * Floating Subtract Memory From Register
 	 * 034
 	 */
 	private void setFSUB(){
 		InstructionCircles circles = new InstructionCircles();
-		//circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_LOAD_OP1_AND_OP2,"RX","RY"));
-		//circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_ALU_EXECUTE));
-		//circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_REG2REG,"RX","RES"));
-		//circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_REG2REG,"RX+1","RES"));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_CALCULATE_EA_TO_MAR));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_MEM2REG,"MBR","MAR"));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_LOAD_F1_AND_F2,"FR","MBR"));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_FALU_EXECUTE));
+		circles.addCircle(new InstructionCircle(InstructionCircle.TYPE_REG2REG,"FR","fRES"));
 		circles.addCommonEndingCircles();
 		
 		putCirclesIntoMaps("FSUB",circles);

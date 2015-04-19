@@ -27,6 +27,8 @@ public class InstructionSetInfo {
 	public static final int BINARY_STYLE_R_DEVID = 4;
 	
 	
+	public static final int BINARY_STYLE_FR_IX_I_ADD = 7;
+	
 	/**
 	 * OPCODE r,x,address[,i]
 	 */
@@ -63,6 +65,9 @@ public class InstructionSetInfo {
 	 * OPCODE r,count,L/R,A/L
 	 */
 	public static final int INSTR_FORMAT_R_COUNT_LR_AL = 9;
+	
+	public static final int INSTR_FORMAT_FR_X_ADD = 11;
+
 	
 	
 	private static InstructionSetInfo _instance;
@@ -122,6 +127,10 @@ public class InstructionSetInfo {
 		addInstruction("IN", 61, BINARY_STYLE_R_DEVID, INSTR_FORMAT_R_DEVID);
 		addInstruction("OUT", 62, BINARY_STYLE_R_DEVID, INSTR_FORMAT_R_DEVID);
 		addInstruction("CHK", 63, BINARY_STYLE_R_DEVID, INSTR_FORMAT_R_DEVID);
+		
+		
+		addInstruction("FADD", 33, BINARY_STYLE_FR_IX_I_ADD, INSTR_FORMAT_FR_X_ADD);
+		addInstruction("FSUB", 34, BINARY_STYLE_FR_IX_I_ADD, INSTR_FORMAT_FR_X_ADD);
 		
 	}
 	

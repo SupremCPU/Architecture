@@ -13,6 +13,10 @@ public class Register {
 		this.name = name;
 		this.size = size;
 		this.data = new int[size];
+		for(int i=0;i<size;i++)
+		{
+			this.data[i]=0;
+		}
 	}
 	
 	public int[] read(){
@@ -45,7 +49,17 @@ public class Register {
 		}
 		//System.out.println("write out");
 	}
-	
+	public void writeFloat(int in[]){ //same operation but could be changed potentially
+		//TODO :exception
+		//System.out.println("write in");
+		for(int i=0;i<size;i++){
+			if(i<in.length)
+				data[size - i - 1] = in[in.length-1-i];
+			else
+				data[size-i-1] = 0;
+		}
+		//System.out.println("write out");
+	}
 	public int intValue(){
 		return Util.getIntValueFromBits(data);
 	}

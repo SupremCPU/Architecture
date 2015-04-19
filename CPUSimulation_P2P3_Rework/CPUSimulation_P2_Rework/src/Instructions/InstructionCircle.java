@@ -25,6 +25,8 @@ public class InstructionCircle {
 	public static final int TYPE_LOAD_OP1 = 0x14;
 	public static final int TYPE_MinusOne= 0x15;
 	public static final int TYPE_CALCULATE_EA_TO_MAR_NO_IX = 0x16;
+	public static final int	TYPE_LOAD_F1_AND_F2=0x17;
+	public static final int	TYPE_FALU_EXECUTE=0x18;	
 	
 	public int type;
 	public String[] args;

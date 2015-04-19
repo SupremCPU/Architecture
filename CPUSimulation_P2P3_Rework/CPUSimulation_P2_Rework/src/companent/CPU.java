@@ -34,6 +34,7 @@ public class CPU {
 	 * (waiting)
 	 * @author yuma youzhao yufei zhou
 	 */
+	public final int OFFSET=2;
 	public static final int MODE_RUN = 0;
 	public static final int MODE_DEBUG_INSTRUCTION = 1;
 	public static final int MODE_DEBUG_CIRCLE = 2;
@@ -221,11 +222,19 @@ public class CPU {
 		addRegister("ADDR", 8);
 		addRegister("EA", 8);
 
-		addRegister("OP1", 18);
+		addRegister("OP1", 18);  
 		addRegister("OP2", 18);
 		addRegister("RES", 18);
 
+		addRegister("fOP1", 18);  
+		addRegister("fOP2", 18); //Floating point unit.
+		addRegister("fRES", 18);		
+		
 		addRegister("DEVID", 5);
+		
+		addRegister("FR", 2);
+		addRegister("FR0", 18);		
+		addRegister("FR1", 18);			
 	}
 
 	private void addRegister(String name, int size) {
@@ -346,7 +355,7 @@ public class CPU {
 	}
 
 	private void executeNextInstruction()
-			throws IllegalInstructionCodeException, InstructionExecuteException {
+			throws Exception {
 		//System.out.println("thread in");
 		try {
 			/*
@@ -386,13 +395,10 @@ public class CPU {
 	/**
 	 * 
 	 * @param circle
-	 * @throws IllegalMemoryAddressException
-	 * @throws RegisterNotFoundException
-	 * @throws IllegalInstructionCodeException
+	 * @throws Exception 
 	 */
 	private void executeOneCircle(InstructionCircle circle)
-			throws IllegalMemoryAddressException, RegisterNotFoundException,
-			IllegalInstructionCodeException {
+			throws Exception {
 
 		/**
 		 * used to save log information
@@ -549,6 +555,7 @@ public class CPU {
 				
 				break;
 			}
+
 			default:
 				value = 0;
 			}
@@ -560,7 +567,54 @@ public class CPU {
 			getRegisterByRealName("RES").setValueByInt(value);
 
 			break;
+		case (InstructionCircle.TYPE_FALU_EXECUTE):
+			int[] data1 = getRegisterByRealName("fOP1").data;
+			int[] data2 = getRegisterByRealName("fOP2").data;
+			int FOPCODE = getRegisterByRealName("OPCODE").intValue();
+			int Val;
+			switch(FOPCODE)
+			{
+			case(33): //FADD
+				Word W1=new Word(data1,Word.FOR_FLOAT);
+				Word W2=new Word(data2,Word.FOR_FLOAT);
+				ShortFloat F1=new ShortFloat(W1);
+				ShortFloat F2=new ShortFloat(W2);
+				//System.out.println(ShortFloat.toFloat(data1)+" "+ShortFloat.toFloat(data2));
+				
+				for(int iii=0;iii<16;iii++)
+				{
+					System.out.print(" "+data2[iii]);
+				}
+				System.out.println();
+				for(int iii=0;iii<16;iii++)
+				{
+					System.out.print(" "+data1[iii]);
+				}
+				System.out.println();
+				Word W3= ShortFloat.FADD(data1,data2);
+				getRegisterByRealName("fRES").writeFloat(W3.data);;
+				break;
+			case(34):	//FSUB
+				 W1=new Word(data1,Word.FOR_FLOAT);
+				 W2=new Word(data2,Word.FOR_FLOAT);
+					for(int iii=0;iii<16;iii++)
+					{
+						System.out.print(" "+data2[iii]);
+					}
+					System.out.println();
+					for(int iii=0;iii<16;iii++)
+					{
+						System.out.print(" "+data1[iii]);
+					}
+					System.out.println();
+				 W3= ShortFloat.FSUB(data1, data2);
+				 getRegisterByRealName("fRES").writeFloat(W3.data);;				
+				break;
+			default:
+				break;
+			}
 
+			break;
 		case (InstructionCircle.TYPE_LOAD_OP1_AND_OP2):
 			dest = getRegister(circle.args[0]);
 			source = getRegister(circle.args[1]);
@@ -569,7 +623,16 @@ public class CPU {
 			msg.append("OP1 = (").append(dest.name).append("), OP2 = (").append(source.name).append(")");
 			msg2(("OP1 = (")+(dest.name)+("), OP2 = (")+(source.name)+(")"));
 			break;
-
+		case (InstructionCircle.TYPE_LOAD_F1_AND_F2): //F2= Memory
+			System.out.println("load frs");
+			dest = getRegister(circle.args[0]);
+			source = getRegister(circle.args[1]);
+			System.out.println(circle.args[0]+" "+circle.args[1]);
+			getRegister("fOP1").write(dest.read());
+			getRegister("fOP2").write(source.read());
+			msg.append("fOP1 = (").append(dest.name).append("), fOP2 = (").append(source.name).append(")");
+			msg2(("fOP1 = (")+(dest.name)+("), fOP2 = (")+(source.name)+(")"));
+			break;
 		case (InstructionCircle.TYPE_PC_PLUS):
 			//System.out.println("AHHHH=======Code++  : ");
 			dest = getRegisterByRealName("PC");
@@ -817,6 +880,16 @@ public class CPU {
 			getRegisterByRealName("RX").write(source.subValue(6, 2));
 			getRegisterByRealName("RY").write(source.subValue(8, 2));
 			break;
+		case (InstructionSetInfo.BINARY_STYLE_FR_IX_I_ADD):	
+			{
+			getRegisterByRealName("FR").write(source.subValue(6, 2));
+			getRegisterByRealName("IX").write(source.subValue(8, 2));
+			getRegisterByRealName("I").write(source.subValue(10, 1));
+			getRegisterByRealName("ADDR").write(source.subValue(11, 7));	
+			break;
+		
+			}
+		
 		}
 
 		msg.append("OPCODE,IX,R,I,ADDR = (").append(source.name).append(")");
@@ -851,7 +924,14 @@ public class CPU {
 		} else if ("IX".equals(name)) {
 			int iVal = registers.get(name).intValue();
 			registerRealName = ("X" + iVal);
-		} else {
+			
+		} 
+		else if("FR".equals(name))
+		{
+			int iVal = registers.get(name).intValue();
+			registerRealName = ("FR" + iVal);			
+		}
+		else {
 			registerRealName = name;
 		}
 

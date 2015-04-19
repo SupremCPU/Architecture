@@ -19,8 +19,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
 
+import basic_rules.Word;
 import caculation.Util;
 import companent.Memory;
+import companent.ShortFloat;
 import caculation.ProgramDecoder;
 import companent.Cache;
 import exception.IllegalMemoryAddressException;
@@ -167,8 +169,11 @@ public class Loader extends JPanel{
 		insCode.append("\nIN 0,3");
 		insCode.append("\nIN 0,3"); */
 		//insCode.append("JCC 3,3,87");
+		//insCode.append("AIR 0,0,40\n");
+		insCode.append("FSUB 0,0,40\n");  //40 as loaded
+		//PROGRAM2
 		
-		insCode.append("LDR 0,0,8");
+		/*insCode.append("LDR 0,0,8");
 		insCode.append("\nAIR 0,127");
 		insCode.append("\nAIR 0,127");
 		insCode.append("\nSTR 0,0,40");
@@ -305,8 +310,27 @@ public class Loader extends JPanel{
 		insCode.append("\nJZ 0,3,85");
 		insCode.append("\nJMP 0,96");
 		insCode.append("\nAIR 3,1");
-		insCode.append("\nJMP 3,56");
+		insCode.append("\nJMP 3,56"); */
 	
+		
+		///////////////////////////////////
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		insCode.setBounds(0, 0, 400, 200);
@@ -420,6 +444,11 @@ public class Loader extends JPanel{
 			Memory mem = Memory.getInstance();
 			int index = 55; //RESERVED 
 			int count = 0;
+			
+			int[] FLT=new int[Word.SIZE];
+			Word.setIntValueForFloat(FLT, 16717);
+			mem.write(40, FLT);
+			System.out.println(ShortFloat.toFloat(FLT));
 			while(line!=null){
 				
 				//if(line.indexOf("-")>=0){

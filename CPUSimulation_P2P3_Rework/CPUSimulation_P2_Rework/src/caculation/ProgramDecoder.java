@@ -9,13 +9,13 @@ import Instructions.InstructionSetInfo;
 
 import caculation.Util;
 import Instructions.InstructionSet;
-
+import basic_rules.*;
 /**
  * you zhao yuma
  */
 
 public class ProgramDecoder {
-
+	public final static int OFFSET=Word.SIZE-16;
 	public static int[] decodeInstruction(String ins){
 		try {
 			StringTokenizer tokenizer = new StringTokenizer(ins," ,");
@@ -68,6 +68,14 @@ public class ProgramDecoder {
 				add = Integer.parseInt(tokenizer.nextToken());
 				break;
 			case (InstructionSetInfo.INSTR_FORMAT_R_X_ADD):
+				r = Integer.parseInt(tokenizer.nextToken());
+				ix = Integer.parseInt(tokenizer.nextToken());
+				add = Integer.parseInt(tokenizer.nextToken());
+				//check if there is indirect flag after address
+				if(tokenizer.hasMoreTokens())
+					i = Integer.parseInt(tokenizer.nextToken());
+				break;		
+			case (InstructionSetInfo.INSTR_FORMAT_FR_X_ADD):
 				r = Integer.parseInt(tokenizer.nextToken());
 				ix = Integer.parseInt(tokenizer.nextToken());
 				add = Integer.parseInt(tokenizer.nextToken());
@@ -132,6 +140,13 @@ public class ProgramDecoder {
 				Util.mergeList(code, Util.getBitsFromIntValue(ry, 2));
 				Util.mergeList(code, Util.getBitsFromIntValue(0, 8));
 				break;
+			case(InstructionSetInfo.BINARY_STYLE_FR_IX_I_ADD):
+			{
+				Util.mergeList(code, Util.getBitsFromIntValue(r, 2));
+				Util.mergeList(code, Util.getBitsFromIntValue(ix, 2));
+				Util.mergeList(code, Util.getBitsFromIntValue(i, 1));
+				Util.mergeList(code, Util.getBitsFromIntValue(add, 7));				
+			}
 			}
 			int[]result = new int[18];
 			for(int index=0;index<code.size();index++)

@@ -40,7 +40,7 @@ private Map<Integer,IODevice> DeviceMap;
 		
 		//file: devid:3
 		CardReader file3 = new CardReader(3,CardReader.IOTYPE_INPUT);
-		file3.setDefaultFile("E:\\Eclipse\\workspace\\Architecture\\CPUPart2\\src\\companent\\TestC.txt");
+		file3.setDefaultFile("TestC.txt");
 		DeviceMap.put(file3.devid, file3);
 		
 		
